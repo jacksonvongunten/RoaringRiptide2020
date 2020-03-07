@@ -6,6 +6,7 @@
 /*----------------------------------------------------------------------------*/
 
 #include "subsystems/Launcher.h"
+#include <string.h>
 
 Launcher::Launcher(double kP, double kI, double kD, double setpoint) : m_kP{kP}, m_kI{kI}, m_kD{kD}, m_setpoint{setpoint} {
 
@@ -18,6 +19,10 @@ Launcher::Launcher(double kP, double kI, double kD, double setpoint) : m_kP{kP},
     launcher.Config_kP(0, m_kP);
     launcher.Config_kI(0, m_kI);
     launcher.Config_kD(0, m_kD);
+
+    finalCountdown.AddInstrument(launcher);
+    std::string path = "building.chrp";
+    finalCountdown.LoadMusic(path);
 
 }
 
@@ -40,5 +45,17 @@ void Launcher::Run() {
 bool Launcher::AtSpeed() {
 
     return (launcher.GetSelectedSensorVelocity() >= m_setpoint-500);
+
+}
+
+void Launcher::StartMusic() {
+
+    finalCountdown.Play();
+
+}
+
+void Launcher::StopMusic() {
+
+    finalCountdown.Stop();
 
 }

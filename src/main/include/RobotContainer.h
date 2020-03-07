@@ -29,6 +29,7 @@
 #include <commands/RotateToTarget.h>
 #include <commands/LaunchAtSpeed.h>
 #include <commands/LimelightDefault.h>
+#include <commands/PlayMusic.h>
 
 #include <frc/XboxController.h>
 
@@ -58,7 +59,7 @@ class RobotContainer {
 
   Drive m_drive;
   Climber m_climber;
-  Launcher m_launcher{0.7, 2e-5, 0, 10800};
+  Launcher m_launcher{0.7, 2e-5, 0, 12000};
   Intake m_intake;
   Elevator m_elevator;
   LimelightData m_lime;
@@ -75,6 +76,8 @@ class RobotContainer {
   frc2::RunCommand stop_elevator{[this] {m_elevator.Stop();}, {&m_elevator}};
   frc2::RunCommand lift_elevator{[this] {m_elevator.LiftElevator(); }, {&m_elevator}};
   frc2::RunCommand run_elevator_reverse{[this] {m_elevator.RunReverse();}, {&m_elevator}};
+  frc2::RunCommand start_music{[this] {m_launcher.StartMusic();}, {&m_launcher}};
+  frc2::RunCommand stop_music{[this] {m_launcher.StopMusic();}, {&m_launcher}};
 
   frc2::SequentialCommandGroup auto_go{
 
@@ -106,6 +109,8 @@ class RobotContainer {
   frc2::Button l_bumper_o{[&] { return operator_controller.GetBumper(frc::GenericHID::JoystickHand::kLeftHand); }};
   frc2::Button up_button_o{[&] { return operator_controller.GetPOV() == 0; }};
   frc2::Button down_button_o{[&] { return operator_controller.GetPOV() == 180; }};
+  frc2::Button right_button_o{[&] { return operator_controller.GetPOV() == 270; }};
+  frc2::Button left_button_o{[&] { return operator_controller.GetPOV() == 90; }};
   frc2::Button r_trigger_o{[&] { return operator_controller.GetTriggerAxis(frc::GenericHID::JoystickHand::kRightHand) != 0; }};
   frc2::Button l_trigger_o{[&] { return operator_controller.GetTriggerAxis(frc::GenericHID::JoystickHand::kLeftHand) != 0; }};
   frc2::Button a_button_o{[&] { return operator_controller.GetAButton(); }};

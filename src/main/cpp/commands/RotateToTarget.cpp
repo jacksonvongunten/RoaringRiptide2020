@@ -13,7 +13,7 @@
 RotateToTarget::RotateToTarget(Drive* drive, LimelightData* lime)
     : CommandHelper(frc2::PIDController(0.06, 0, 0),
                     // This should return the measurement
-                    [lime] { return lime->GetHorizontalOffset(); },
+                    [lime] { lime->Track(); return lime->GetHorizontalOffset(); },
                     // This should return the setpoint (can also be a constant)
                     [] { return 0; },
                     // This uses the output

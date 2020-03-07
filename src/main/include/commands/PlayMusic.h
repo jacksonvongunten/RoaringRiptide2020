@@ -7,32 +7,25 @@
 
 #pragma once
 
-#include <iostream>
+#include <frc2/command/CommandBase.h>
+#include <frc2/command/CommandHelper.h>
 
-#include <frc2/command/SubsystemBase.h>
-#include <ctre/Phoenix.h>
+#include <subsystems/Launcher.h>
 
-class Launcher : public frc2::SubsystemBase {
+/**
+ * An example command.
+ *
+ * <p>Note that this extends CommandHelper, rather extending CommandBase
+ * directly; this is crucially important, or else the decorator functions in
+ * Command will *not* work!
+ */
+class PlayMusic
+    : public frc2::CommandHelper<frc2::CommandBase, PlayMusic> {
  public:
-  Launcher(double kP, double kI, double kD, double setpoint);
+  PlayMusic(Launcher* launcher);
 
-  void Stop();
-  void Run();
-  bool AtSpeed();
-  void StartMusic();
-  void StopMusic();
+  void Execute() override;
 
-  /**
-   * Will be called periodically whenever the CommandScheduler runs.
-   */
-  void Periodic();
-
- private:
-  TalonFX launcher{6};
-  Orchestra finalCountdown;
-  double m_kP;
-  double m_kI;
-  double m_kD;
-  double m_setpoint;
-
+  private:
+    Launcher* m_launcher;
 };
