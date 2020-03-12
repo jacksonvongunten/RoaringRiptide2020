@@ -26,7 +26,7 @@ void Climber::ExtendUp() {
     }
     else {
 
-        left.Set(-0.5);
+        left.Set(-ClimberConstants::arm_up_speed);
 
     }
 
@@ -37,7 +37,7 @@ void Climber::ExtendUp() {
     }
     else {
 
-        right.Set(0.5);
+        right.Set(ClimberConstants::arm_up_speed);
 
     }
 
@@ -67,7 +67,7 @@ void Climber::PullDown() {
     }
     else {
 
-        left.Set(0.5);
+        left.Set(ClimberConstants::arm_down_speed);
 
     }
 
@@ -78,11 +78,11 @@ void Climber::PullDown() {
     }
     else {
 
-        right.Set(-0.5);
+        right.Set(-ClimberConstants::arm_down_speed);
 
     }
 
-    leftServo.Set(0.25);
-    rightServo.Set(0.25);
+    leftServo.Set(ClimberConstants::servo_angle);
+    rightServo.Set(ClimberConstants::servo_angle);
 
 }

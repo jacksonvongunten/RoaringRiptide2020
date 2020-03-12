@@ -19,6 +19,7 @@ class Launcher : public frc2::SubsystemBase {
   void Stop();
   void Run();
   bool AtSpeed();
+  double GetEncoderCount();
   void StartMusic();
   void StopMusic();
 

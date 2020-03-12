@@ -12,6 +12,7 @@
 #include <frc/SpeedControllerGroup.h>
 #include <frc/drive/DifferentialDrive.h>
 #include <frc/DoubleSolenoid.h>
+#include <Constants.h>
 
 class Drive : public frc2::SubsystemBase {
  public:
@@ -22,6 +23,7 @@ class Drive : public frc2::SubsystemBase {
    */
   void Periodic();
 
+  void CurvatureDrive(double forward, double rotate);
   void ArcadeDrive(double forward, double rotate);
 
   void SetHighGear();
@@ -29,24 +31,24 @@ class Drive : public frc2::SubsystemBase {
 
   void ResetEncoder();
 
-  double DriveToDistance(double setpoint);
+  void DriveToDistance(double setpoint);
 
  private:
 
-  WPI_TalonSRX left_talon1 = {0};
-  WPI_TalonSRX left_talon2 = {1};
-  WPI_VictorSPX left_victor = {2};
+  WPI_TalonSRX left_talon1 = {DriveConstants::left_talon1};
+  WPI_TalonSRX left_talon2 = {DriveConstants::left_talon2};
+  WPI_VictorSPX left_victor = {DriveConstants::left_victor};
 
-  WPI_TalonSRX right_talon1 = {3};
-  WPI_TalonSRX right_talon2 = {4};
-  WPI_VictorSPX right_victor = {5};
+  WPI_TalonSRX right_talon1 = {DriveConstants::right_talon1};
+  WPI_TalonSRX right_talon2 = {DriveConstants::right_talon2};
+  WPI_VictorSPX right_victor = {DriveConstants::right_victor};
 
   frc::SpeedControllerGroup left{left_talon1, left_talon2, left_victor};
   frc::SpeedControllerGroup right{right_talon1, right_talon2, right_victor};
 
   frc::DifferentialDrive drive{left, right};
 
-  frc::DoubleSolenoid shifter{0, 1};
+  frc::DoubleSolenoid shifter{DriveConstants::shifter[0], DriveConstants::shifter[1]};
 
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.

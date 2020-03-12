@@ -63,10 +63,17 @@ void Drive::ResetEncoder() {
 
 }
 
-double Drive::DriveToDistance(double setpoint) {
+void Drive::DriveToDistance(double setpoint) {
 
     left_talon1.Set(ControlMode::Position, -setpoint);
     right_talon1.Set(ControlMode::Position, setpoint);
+
+}
+
+void Drive::CurvatureDrive(double forward, double rotate) {
+
+    drive.CurvatureDrive(forward, rotate, false);
+    this->SetLowGear();
 
 }
 

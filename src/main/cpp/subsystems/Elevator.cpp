@@ -18,13 +18,13 @@ void Elevator::Periodic() {}
 
 void Elevator::Run() {
 
-    elevator.Set(ControlMode::PercentOutput, 0.5);
+    elevator.Set(ControlMode::PercentOutput, ElevatorConstants::elevator_forward_speed);
 
 }
 
 void Elevator::RunReverse() {
 
-    elevator.Set(ControlMode::PercentOutput, -0.5);
+    elevator.Set(ControlMode::PercentOutput, -ElevatorConstants::elevator_reverse_speed);
 
 }
 

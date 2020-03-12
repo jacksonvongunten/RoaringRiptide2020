@@ -10,6 +10,7 @@
 #include <frc2/command/SubsystemBase.h>
 #include <frc/DoubleSolenoid.h>
 #include <ctre/Phoenix.h>
+#include <Constants.h>
 
 class Intake : public frc2::SubsystemBase {
  public:
@@ -27,8 +28,8 @@ class Intake : public frc2::SubsystemBase {
 
  private:
 
-  frc::DoubleSolenoid arm{2, 3};
-  WPI_VictorSPX intake = {8};
+  frc::DoubleSolenoid arm{IntakeConstants::arm_ports[0], IntakeConstants::arm_ports[1]};
+  WPI_VictorSPX intake = {IntakeConstants::intake_victor};
 
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.

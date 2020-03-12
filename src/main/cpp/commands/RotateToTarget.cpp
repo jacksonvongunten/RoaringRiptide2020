@@ -11,7 +11,7 @@
 // For more information, see:
 // https://docs.wpilib.org/en/latest/docs/software/commandbased/convenience-features.html
 RotateToTarget::RotateToTarget(Drive* drive, LimelightData* lime)
-    : CommandHelper(frc2::PIDController(0.06, 0, 0),
+    : CommandHelper(frc2::PIDController(0.05, 0, 0),
                     // This should return the measurement
                     [lime] { lime->Track(); return lime->GetHorizontalOffset(); },
                     // This should return the setpoint (can also be a constant)

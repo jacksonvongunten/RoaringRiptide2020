@@ -35,11 +35,16 @@
 
 #include <frc/smartdashboard/SendableChooser.h>
 #include <frc/shuffleboard/Shuffleboard.h>
+#include <frc/smartdashboard/SmartDashboard.h>
 
 #include <frc2/command/button/Button.h>
 #include <frc2/command/RunCommand.h>
 #include <frc2/command/SequentialCommandGroup.h>
 #include <frc2/command/ParallelCommandGroup.h>
+
+#include <frc/Timer.h>
+
+#include <Constants.h>
 
 /**
  * This class is where the bulk of the robot should be declared.  Since
@@ -59,10 +64,12 @@ class RobotContainer {
 
   Drive m_drive;
   Climber m_climber;
-  Launcher m_launcher{0.7, 2e-5, 0, 12000};
+  Launcher m_launcher{LauncherConstants::kP, LauncherConstants::kI, LauncherConstants::kD, LauncherConstants::setpoint};
   Intake m_intake;
   Elevator m_elevator;
   LimelightData m_lime;
+
+  frc::Timer timer;
 
   frc2::RunCommand lift_up_arm{[this] {m_climber.ExtendUp();}, {&m_climber}};
   frc2::RunCommand lift_up_robot{[this] {m_climber.PullDown();}, {&m_climber}};
@@ -79,7 +86,7 @@ class RobotContainer {
   frc2::RunCommand start_music{[this] {m_launcher.StartMusic();}, {&m_launcher}};
   frc2::RunCommand stop_music{[this] {m_launcher.StopMusic();}, {&m_launcher}};
 
-  frc2::SequentialCommandGroup auto_go{
+  frc2::SequentialCommandGroup advanced_auto{
 
     frc2::InstantCommand{ [this] { m_drive.ResetEncoder(); }, {&m_drive}},
     frc2::RunCommand{ [this] { m_drive.DriveToDistance(30000); }, {&m_drive} }.WithTimeout(2_s),
@@ -92,6 +99,15 @@ class RobotContainer {
     frc2::InstantCommand{[this] { m_intake.LowerArm(); }, {&m_intake}}
 
     }
+
+  };
+
+  frc2::InstantCommand nothing_auto{ [this] {} };
+
+  frc2::SequentialCommandGroup drive_auto{
+
+    frc2::InstantCommand{ [this] {m_drive.ResetEncoder(); }, {&m_drive}},
+    frc2::RunCommand{ [this] { m_drive.DriveToDistance(30000); }, {&m_drive} }.WithTimeout(2_s)
 
   };
 

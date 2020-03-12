@@ -10,6 +10,7 @@
 #include <frc2/command/SubsystemBase.h>
 #include <ctre/Phoenix.h>
 #include <frc/Servo.h>
+#include <Constants.h>
 
 class Elevator : public frc2::SubsystemBase {
  public:
@@ -26,8 +27,8 @@ class Elevator : public frc2::SubsystemBase {
   void Periodic();
 
  private:
-  WPI_VictorSPX elevator = {9};
-  frc::Servo resetBall{3};
+  WPI_VictorSPX elevator = {ElevatorConstants::elevator_victor};
+  frc::Servo resetBall{ElevatorConstants::elevator_servo};
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
 };

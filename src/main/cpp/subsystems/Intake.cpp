@@ -26,13 +26,13 @@ void Intake::RaiseArm() {
 
 void Intake::RunIntake() {
 
-    intake.Set(0.8);
+    intake.Set(IntakeConstants::forward_intake_speed);
 
 }
 
 void Intake::RunIntakeReverse() {
 
-    intake.Set(-0.8);
+    intake.Set(-IntakeConstants::reverse_intake_speed);
 
 }
 

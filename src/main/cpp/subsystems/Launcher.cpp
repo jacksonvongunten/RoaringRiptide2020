@@ -48,6 +48,12 @@ bool Launcher::AtSpeed() {
 
 }
 
+double Launcher::GetEncoderCount() {
+
+    return launcher.GetSelectedSensorVelocity();
+
+}
+
 void Launcher::StartMusic() {
 
     finalCountdown.Play();

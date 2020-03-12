@@ -11,6 +11,7 @@
 #include <ctre/Phoenix.h>
 #include <frc/DigitalInput.h>
 #include <frc/Servo.h>
+#include <Constants.h>
 
 class Climber : public frc2::SubsystemBase {
  public:
@@ -28,16 +29,16 @@ class Climber : public frc2::SubsystemBase {
 
  private:
   
-  WPI_VictorSPX left = {6};
-  WPI_VictorSPX right = {7};
+  WPI_VictorSPX left = {ClimberConstants::left};
+  WPI_VictorSPX right = {ClimberConstants::right};
 
-  frc::DigitalInput leftLimitSwitch{9};
-  frc::DigitalInput rightLimitSwitch{8};
+  frc::DigitalInput leftLimitSwitch{ClimberConstants::top_left_limit_switch};
+  frc::DigitalInput rightLimitSwitch{ClimberConstants::top_right_limit_switch};
 
-  frc::DigitalInput leftBottomLimitSwitch{7};
-  frc::DigitalInput rightBottomLimitSwitch{6};
+  frc::DigitalInput leftBottomLimitSwitch{ClimberConstants::bottom_left_limit_switch};
+  frc::DigitalInput rightBottomLimitSwitch{ClimberConstants::bottom_right_limit_switch};
 
-  frc::Servo leftServo{0};
-  frc::Servo rightServo{1};
+  frc::Servo leftServo{ClimberConstants::left_servo};
+  frc::Servo rightServo{ClimberConstants::right_servo};
 
 };

@@ -13,6 +13,6 @@ DefaultDrive::DefaultDrive(Drive* subsystem, std::function<double()> forward, st
 
 void DefaultDrive::Execute() {
 
-  m_subsystem->ArcadeDrive(m_forward(), m_rotate());
+  m_subsystem->CurvatureDrive(m_forward(), m_rotate());
 
 }
