@@ -1,0 +1,32 @@
+See file:///C:/Users/jacks/Documents/FRC/RoaringRiptide%202020/build/tmp/compileFrcUserProgramReleaseExecutableFrcUserProgramCpp/output.txt for all output for compileFrcUserProgramReleaseExecutableFrcUserProgramCpp.
+compiling DefaultDrive.cpp successful.
+
+compiling DefaultIntake.cpp successful.
+
+compiling LaunchAtSpeed.cpp successful.
+
+compiling PlayMusic.cpp successful.
+
+compiling StopClimber.cpp successful.
+
+compiling RotateToTarget.cpp successful.
+
+compiling StopElevator.cpp successful.
+
+compiling StopLauncher.cpp successful.
+
+compiling Climber.cpp successful.
+
+compiling Elevator.cpp successful.
+
+compiling Drive.cpp successful.
+
+compiling Intake.cpp successful.
+
+compiling Launcher.cpp successful.
+
+compiling Robot.cpp successful.
+
+compiling RobotContainer.cpp successful.
+
+Finished compileFrcUserProgramReleaseExecutableFrcUserProgramCpp, see full log file:///C:/Users/jacks/Documents/FRC/RoaringRiptide%202020/build/tmp/compileFrcUserProgramReleaseExecutableFrcUserProgramCpp/output.txt.
